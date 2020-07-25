@@ -1,0 +1,14 @@
+$colors: (
+  "default": hsla( 210, 20%, 80%, .35 ),
+  "primary": hsl( 210, 10%, 20% ),
+  "secondary": hsl( 210, 90%, 50% ),
+  "success": hsl( 150, 50%, 50% ),
+  "error": hsl( 10, 70%, 60% ),
+  "focus": hsla( 210, 50%, 50%, .5 )
+) !default;
+
+@mixin build-variables( $vars ) {
+  @each $key, $color in $vars {
+    --#{ $key }-color: #{ $color };
+  }
+}

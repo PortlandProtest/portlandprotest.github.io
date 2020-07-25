@@ -1,0 +1,177 @@
+@import "colors.scss";
+
+$font-weight: 400;
+
+$contrast_light_color: hsl( 252, 10%, 40% );
+$contrast_dark_color: hsl( 252, 10%, 90% );
+
+$font-color: hsl( 252, 10%, 40% );
+
+$horizontal-spacing: 1rem;
+$vertical-spacing:   .75rem;
+
+
+$padding_top: 3rem !default;
+$padding_left: $padding_top !default;
+$padding_bottom: $padding_top !default;
+$padding_right: $padding_left !default;
+
+$transition-duration: .25s;
+$transition-easing:   ease-in-out;
+
+$breakpoints: (
+  small: 0px,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include build-variables( $colors );
+
+  --font-color:       #{ $font-color };
+  --font-size:        20px;
+  --font-line-height: 1.5;
+  --font-weight:      400;
+  --font-family:      sans-serif;
+  --text-align:       left;
+
+  --display: block;
+
+  --header_font-weight:      600;
+  --header_font-family:      var( --font-family );
+  --header_font-color:       hsl( 252, 25%, 12% );
+  --header_margin:           0;
+  --header_font-line-height: 1;
+
+  --blockquote_margin:            0;
+  --blockquote_font-color:        hsla( 252, 10%, 12%, .35);
+  --blockquote_font-family:       'Lora', serif;
+  --blockquote_font-weight:       var( --font-weight );
+  --blockquote_font-size:         1.5rem;
+  --blockquote_font-size_desktop: 2.5rem;
+
+  --link_font-color:       hsla( 252, 25%, 12%, .5);
+  --link_font-color_hover: hsla( 252, 25%, 12%, 1);
+  --link_font_weight:      600;
+
+  --margin: 0;
+  --padding: 0;
+
+  --layout-post_padding: 0 $horizontal-spacing $horizontal-spacing $horizontal-spacing;
+  --layout-post_margin:  8rem;
+
+  --transition: var( --transition_attribute ) var( --transition_duration ) var( --transition_ease ) var( --transition_delay );
+  --transition_attribute: all;
+  --transition_duration: .25s;
+  --transition_ease: ease-in-out;
+  --transition_delay: 0;
+
+  --fill_color: none;
+  --stroke_color: var( --font-color );
+
+  --box-shadow-depth-1:
+    1px 1px 1px hsla( 190, 0%, 35%, .05 ),
+    2px 2px 2px hsla( 190, 0%, 35%, .15 );
+  --box-shadow-depth-2:
+    0 1px 1px hsla( 190, 0%, 35%, .025 ),
+    0 4px 4px hsla( 190, 0%, 35%, .025 ),
+    0 7px 7px hsla( 190, 0%, 35%, .025 ),
+    0 11px 11px hsla( 190, 0%, 35%, .025 );
+
+  --background-color: hsl( 190, 25%, 98% );
+
+  background-color: var( --background-color );
+  overflow-x: hidden;
+  color: var( --font-color );
+  font: {
+    size: var( --font-size );
+    family: var( --font-family );
+    weight: var( --font-weight );
+  }
+  text: {
+    align: var( --text-align );
+  }
+  line-height: var( --font-line-height );
+  margin: var( --margin );
+  padding: var( --padding );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  --font-color:       var( --header_font-color );
+  --margin:           var( --header_margin );
+  --font-family:      var( --header_font-family );
+  --font-weight:      var( --header_font-weight );
+  --font-line-height: var( --header_font-line-height );
+  
+  color: var( --font-color );
+  line-height: var( --font-line-height );
+  margin: var( --margin );
+}
+.headline {
+  font-size: var(--font-size);
+}
+h1 {
+  &.headline {
+    --font-size: 6rem;
+  }
+}
+
+a {
+  --font-color:  var( --link_font-color );
+  --font-weight: var( --link_font_weight );
+
+  color: var( --font-color );
+  font-size: var( --font-size );
+  font-family: var( --font-family );
+  font-weight: var( --font-weight );
+  transition: var( --transition );
+  &:hover {
+    --font-color: var( --link_font-color_hover );
+  }
+}
+
+.container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+}
+
+#map {
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+}
+
+.leaflet-control-layers-base {
+  font-size: 1rem;
+  padding: .5rem;
+  & > label {
+    padding: .25rem 0;
+  }
+  & > h4 {
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+    border-bottom: dotted 1px black;
+  }
+}
+
+.leaflet-container {
+  .leaflet-control-attribution {
+    --font-size: .75rem;
+    font-size: var(--font-size);
+  }  
+}
